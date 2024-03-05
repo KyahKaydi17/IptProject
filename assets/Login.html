@@ -87,6 +87,9 @@
 
             <button type="submit" class="btn btn-primary">Sign in</button>
             <a href="Register.html" class="btn btn-primary">Create New User</a>
+            <div class="text-center mt-3">
+                <a class="btn-link" href="#" id="forgotPasswordLink">Forgot your password?</a>
+            </div>
         </form>
     </div>
 
@@ -96,7 +99,7 @@
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { getDatabase, get, ref, child} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
 
@@ -119,7 +122,7 @@
         let EmailInp = document.getElementById('emailInp');
         let PassInp = document.getElementById('passwordInp');
         let MainForm = document.getElementById('MainForm');
-
+        const ForgotPasswordLink = document.getElementById('forgotPasswordLink');
 
         let SignInUser = evt => {
         evt.preventDefault();
@@ -148,7 +151,27 @@
             });
     }
         
+
+    const ForgotPassword = () => {
+            const emailAddress = EmailInp.value;
+
+            if (emailAddress) {
+                sendPasswordResetEmail(auth, emailAddress)
+                    .then(() => {
+                        alert('Password reset email sent! Check your inbox.');
+                    })
+                    .catch((error) => {
+                        alert(error.message);
+                        console.log(error.code);
+                        console.log(error.message);
+                    });
+            } else {
+                alert('Please enter your email address before requesting a password reset.');
+            }
+        };
+
         MainForm.addEventListener('submit', SignInUser);
+        ForgotPasswordLink.addEventListener('click', ForgotPassword);
       </script>
 </body>
 
