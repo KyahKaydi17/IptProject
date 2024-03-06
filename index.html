@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social Media</title>
-    <style>
+   <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           background-image: url('indexBG.jpg');
-            color: #333;
+            background-image: url('indexBG.jpg');
+            color: #fff; /* Changed text color to white for better readability */
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,7 +20,7 @@
         }
 
         .container {
-            background-color: rgba(2, 2, 2, 0.5);
+            background-color: rgba(255, 255, 255, 0.3); /* Changed background to transparent white */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 40px;
@@ -37,30 +37,34 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
+        h1, .tagline, .features li, .cta a {
+            color: #fff; /* Changed text color to white */
+        }
+
         h1 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: #1a1a1a;
+            color: #fff; /* Changed text color to white */
         }
 
         .logo {
             margin-bottom: 20px;
             font-size: 2.5rem;
-            color: #333;
+            color: #fff; /* Changed text color to white */
             text-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
         }
 
         .tagline {
             font-size: 1rem;
             margin-bottom: 20px;
-            color: #555;
+            color: #fff; /* Changed text color to white */
         }
 
         .features {
             margin-bottom: 20px;
             list-style: none;
             padding: 0;
-            color: #777;
+            color: #fff; /* Changed text color to white */
         }
 
         .features li {
@@ -86,7 +90,7 @@
             margin-right: 10px;
             overflow: hidden;
             position: relative;
-            color: #fff;
+            color: #333; /* Changed text color to a darker shade for better contrast */
             background: linear-gradient(to right, #007bff, #0062cc);
             border: 2px solid transparent;
             transition: background 0.3s ease, transform 0.3s ease;
