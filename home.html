@@ -109,39 +109,41 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 
-        <script>
-            let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-            let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-        
-            let MsgHead = document.getElementById('msg');
-            let GreetHead = document.getElementById('greet');
-            let SignoutBtn = document.getElementById('signoutbutton');
-        
-            let Signout = () => {
-                sessionStorage.removeItem("user-creds");
-                sessionStorage.removeItem("user-info");
-                window.location.href = 'index.html'
-            }
-        
-            let CheckCred = () => {
-                if (!sessionStorage.getItem("user-creds") || !sessionStorage.getItem("user-info")) {
-                    window.location.href = 'Login.html'
-                } else {
-                    // Retrieve user information from session storage
-                    UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-        
-                    MsgHead.innerText = `User with email "${UserCreds.email}" logged in`;
-                    GreetHead.innerText = `Welcome ${UserInfo.firstname} ${UserInfo.lastname}!`;
-                    
-                    // Retrieve first name and last name and update the profile.html link
-                    document.getElementById('firstNameValue').textContent = UserData.firstname;
-                    document.getElementById('lastNameValue').textContent = UserData.lastname;
-                }
-            }
-        
-            window.addEventListener('load', CheckCred);
-            SignoutBtn.addEventListener('click', Signout);
-        </script>
+       <script>
+    let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+    let MsgHead = document.getElementById('msg');
+    let GreetHead = document.getElementById('greet');
+    let SignoutBtn = document.getElementById('signoutbutton');
+
+    let Signout = () => {
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        window.location.href = 'index.html'
+    }
+
+    let CheckCred = () => {
+        if (!sessionStorage.getItem("user-creds") || !sessionStorage.getItem("user-info")) {
+            window.location.href = 'Login.html'
+        } else {
+            // Retrieve user information from session storage
+            UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+            MsgHead.innerText = `User with email "${UserCreds.email}" logged in`;
+            GreetHead.innerText = `Welcome ${UserInfo.firstname} ${UserInfo.lastname}!`;
+            
+            // You can use UserInfo.firstname, UserInfo.lastname, etc. to access user details
+
+            // Retrieve first name and last name and update the profile.html link
+            document.getElementById('firstNameValue').textContent = UserInfo.firstname;
+            document.getElementById('lastNameValue').textContent = UserInfo.lastname;
+        }
+    }
+
+    window.addEventListener('load', CheckCred);
+    SignoutBtn.addEventListener('click', Signout);
+</script>
 </body>
 
 </html>
